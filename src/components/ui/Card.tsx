@@ -1,5 +1,7 @@
 // src/components/Card.tsx
 import React from "react";
+import { truncateDescription } from "../../utils/truncateText";
+import { Link } from "react-router";
 
 interface CardProps {
   imageSrc?: string;
@@ -19,42 +21,30 @@ const Card: React.FC<CardProps> = ({
   buttonLink,
 }) => {
   return (
-    <div className=" bg-white border border-gray-200 rounded-lg shadow-lg w-5/6">
-      <div className="p-5">
-        {imageSrc && (
-          <img className="rounded-lg " src={imageSrc} alt={imageAlt} />
-        )}
+    <div className="cursor-pointer group relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 hover:shadow-lg transition-shadow duration-300">
+      <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
+        <img
+          className="transition-transform duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)] transform group-hover:scale-110"
+          src={imageSrc}
+          alt={imageAlt}
+        />
       </div>
-      <div className="p-5">
-        <a href={buttonLink}>
-          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 ">
-            {title}
-          </h5>
-        </a>
-        <p className="mb-3 text-sm truncate font-normal text-gray-700 ">
-          {description}
+      <div className="p-4">
+        <h6 className="mb-2 text-slate-800 text-xl font-semibold">
+          {truncateDescription(title, 35)}
+        </h6>
+        <p className="text-slate-600 leading-normal font-light">
+          {truncateDescription(description, 70)}
         </p>
-        <a
-          href={buttonLink}
-          className="w-1/2 flex items-center px-8 py-2 rounded-md bg-blue-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-blue-500 "
+      </div>
+      <div className="px-4 pb-4 pt-0 mt-2">
+        <Link
+          to={buttonLink}
+          className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg active:bg-slate-700 hover:border-slate-700 hover:bg-transparent hover:text-black"
+          type="button"
         >
           {buttonText}
-          <svg
-            className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
-        </a>
+        </Link>
       </div>
     </div>
   );

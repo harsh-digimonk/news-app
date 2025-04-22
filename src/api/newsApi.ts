@@ -16,7 +16,7 @@ export const fetchTopStories = async (section = 'home'):Promise<topStoryResponse
   }
 };
 
-export const fetchStoryDetail = async (section = 'home'):Promise<topStoryResponse> => {
+export const fetchStoryDetail = async ():Promise<topStoryResponse> => {
   try {
     const n = encodeURIComponent('nyt://article/8bce652f-420f-5ca6-8001-48355de35192')
     const response = await apiService.get(`/search/v2/articlesearch.json?fq=_id.${n}`, {
