@@ -20,9 +20,9 @@ Project structure
 │   ├── assets
 │   ├── components
 │   ├── hooks
-│   ├── services
+│   ├── api
 │   ├── pages
-│   ├── types
+│   ├── utils
 │   ├── App.tsx
 │   └── main.tsx
 ├── .gitignore
