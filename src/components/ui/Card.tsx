@@ -19,18 +19,24 @@ const Card: React.FC<CardProps> = ({
   buttonLink,
 }) => {
   return (
-    <div className=" bg-white border border-gray-200 rounded-lg shadow-sm ">
-      {imageSrc && <img className="rounded-t-lg " src={imageSrc} alt={imageAlt} />}
+    <div className=" bg-white border border-gray-200 rounded-lg shadow-lg w-5/6">
+      <div className="p-5">
+        {imageSrc && (
+          <img className="rounded-lg " src={imageSrc} alt={imageAlt} />
+        )}
+      </div>
       <div className="p-5">
         <a href={buttonLink}>
           <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 ">
             {title}
           </h5>
         </a>
-        <p className="mb-3 text-sm truncate font-normal text-gray-700 ">{description}</p>
+        <p className="mb-3 text-sm truncate font-normal text-gray-700 ">
+          {description}
+        </p>
         <a
           href={buttonLink}
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center border-blue-700 border-2 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 "
+          className="w-1/2 flex items-center px-8 py-2 rounded-md bg-blue-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-blue-500 "
         >
           {buttonText}
           <svg
