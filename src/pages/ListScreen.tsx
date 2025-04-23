@@ -7,6 +7,7 @@ import useArticleStore from "../store/articleStore";
 import Dropdown from "../components/ui/Dropdown";
 import { categoriesList } from "../data/categories";
 import { useState } from "react";
+import { cn } from "../utils/mergeClass";
 
 function ListScreen() {
   const [section, setSection] = useState("home");
@@ -31,7 +32,7 @@ function ListScreen() {
   };
   return (
     <>
-      <div className="container mx-auto text-right">
+      <div className="container mx-auto text-right px-32">
         <Dropdown
           id="category-dropdown"
           title="Choose Category"
@@ -44,12 +45,12 @@ function ListScreen() {
         <Loader />
       ) : (
         <div className="container mx-auto p-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-3">
             {articles &&
-              articles.map((article) =>
+              articles.map((article, index) =>
                 article.url ? (
                   <Card
-                    key={article.url}
+                    key={index}
                     title={article.title}
                     description={article.abstract}
                     imageSrc={
@@ -60,6 +61,10 @@ function ListScreen() {
                     buttonText="Read More"
                     onClick={() => handleReadMore(article)}
                     imageAlt={article.title}
+                    className={cn(
+                      "group/grid shadow-input row-span-1 flex flex-col justify-between space-y-4 w-full h-full rounded-xl border border-neutral-200 bg-white p-4 transition duration-200 hover:shadow-xl",
+                      index === 3 || index === 6 ? "md:col-span-2" : ""
+                    )}
                   />
                 ) : null
               )}
