@@ -48,21 +48,21 @@ function ListScreen() {
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-3">
             {articles &&
               articles.map((article, index) =>
-                article.url ? (
+                article.url && article.multimedia ? (
                   <Card
                     key={index}
                     title={article.title}
+                    section={article.section}
                     description={article.abstract}
                     imageSrc={
                       article.multimedia.find(
                         (img) => img.format === "threeByTwoSmallAt2X"
                       )?.url
                     }
-                    buttonText="Read More"
                     onClick={() => handleReadMore(article)}
                     imageAlt={article.title}
                     className={cn(
-                      "group/grid shadow-input row-span-1 flex flex-col justify-between space-y-4 w-full h-full rounded-xl border border-neutral-200 bg-white p-4 transition duration-200 hover:shadow-xl",
+                      "group/grid shadow-input row-span-1 flex flex-col justify-between space-y-4 w-full h-full rounded-xl   p-4 transition duration-200",
                       index === 3 || index === 6 ? "md:col-span-2" : ""
                     )}
                   />

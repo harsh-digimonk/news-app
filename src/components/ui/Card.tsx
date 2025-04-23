@@ -7,9 +7,9 @@ interface CardProps {
   imageAlt: string;
   title: string;
   description: string;
-  buttonText: string;
   className?: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  section: string;
+  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -17,14 +17,16 @@ const Card: React.FC<CardProps> = ({
   imageAlt,
   title,
   description,
-  buttonText,
   onClick,
   className,
+  section
 }) => {
+  const textHover = `bg-gradient-to-r from-blue-200 to-blue-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:80%_3px] group-hover:bg-[length:80%_10px]`
   return (
     <div
+      onClick={onClick}
       className={cn(
-        "cursor-pointer group relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg hover:shadow-lg transition-shadow duration-300 m-auto",
+        "cursor-pointer group relative flex flex-col my-6  rounded-lg  m-auto",
         className
       )}
     >
@@ -36,22 +38,14 @@ const Card: React.FC<CardProps> = ({
             alt={imageAlt}
           />
         </div>
-        <div className="p-4">
-          <h6 className="mb-2 text-slate-800 text-xl font-semibold">
+        <span className="text-xs font-medium tracking-wider uppercase px-4 mt-5 text-blue-600">{section}</span>
+        <div className="p-4 group">
+          <h6 className={cn("mb-2 text-slate-800 text-lg font-semibold",textHover)}>
             {truncateDescription(title, 35)}
           </h6>
-          <p className="text-slate-600 leading-normal font-light">
+          <p className="text-slate-600 text-md leading-normal font-light">
             {truncateDescription(description, 70)}
           </p>
-        </div>
-        <div className="px-4 pb-4 pt-0 mt-2">
-          <button
-            onClick={onClick}
-            className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg active:bg-slate-700 hover:border-slate-700 hover:bg-transparent hover:text-black"
-            type="button"
-          >
-            {buttonText}
-          </button>
         </div>
       </div>
     </div>

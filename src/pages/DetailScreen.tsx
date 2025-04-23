@@ -1,7 +1,8 @@
 import { format, parseISO } from "date-fns";
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useArticleStore from "../store/articleStore";
+import { SlArrowLeftCircle } from "react-icons/sl";
 
 function DetailScreen() {
   const article = useArticleStore((state) => state.selectedArticle);
@@ -23,10 +24,13 @@ function DetailScreen() {
 
   return (
     <>
+      <Link to={"/"} className="absolute left-50">
+        <SlArrowLeftCircle className="w-10 h-10" />
+      </Link>
       <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg space-y-10">
         <div className="mx-auto max-w-screen-md text-center">
           <span className="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm uppercase">
-            {section === '' ? 'Top News': section}
+            {section === "" ? "Top News" : section}
           </span>
           <h1 className="mb-3 mt-2 text-center text-3xl font-semibold tracking-tight lg:text-4xl lg:leading-snug">
             {title}
