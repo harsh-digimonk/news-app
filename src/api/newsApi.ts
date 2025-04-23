@@ -2,9 +2,7 @@ import { topStoryResponse } from "../utils/types";
 import apiService from "./api";
 import { API_KEY } from "./apiConfig";
 
-export const fetchTopStories = async (
-  section = "home"
-): Promise<topStoryResponse> => {
+export const fetchTopStories = async (section: string): Promise<topStoryResponse> => {
   try {
     const response = await apiService.get(`/topstories/v2/${section}.json`, {
       params: {
