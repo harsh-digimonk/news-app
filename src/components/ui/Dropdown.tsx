@@ -61,7 +61,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   }, []);
 
   const dropdownPosition = classNames(
-    "absolute z-10 mt-2 rounded shadow bg-white",
+    "absolute z-10 mt-2 rounded shadow bg-white w-full",
     {
       "top-full left-0": position === "bottom-left",
       "top-full right-0": position === "bottom-right",
@@ -90,7 +90,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
       {isOpen && (
         <div className={dropdownPosition}>
-          <ul className="max-h-52 overflow-y-auto rounded-md border border-gray-200 py-2 w-full">
+          <ul className="max-h-52 overflow-y-auto scrollbar rounded-md border border-gray-200 py-2 w-full">
             {data.map((item) => (
               <li
                 key={item.id}

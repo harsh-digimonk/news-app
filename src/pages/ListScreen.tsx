@@ -25,7 +25,7 @@ function ListScreen() {
   const handleSelect = (id: string) => {
     const category = categoriesList.find((cat) => cat.id === id);
     if (category) {
-      const encodeCategory = encodeURIComponent(category.name)
+      const encodeCategory = encodeURIComponent(category.name);
       setSection(encodeCategory);
     }
   };
@@ -46,21 +46,23 @@ function ListScreen() {
         <div className="container mx-auto p-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10">
             {articles &&
-              articles.map((article) => (
-                <Card
-                  key={article.url}
-                  title={article.title}
-                  description={article.abstract}
-                  imageSrc={
-                    article.multimedia.find(
-                      (img) => img.format === "threeByTwoSmallAt2X"
-                    )?.url
-                  }
-                  buttonText="Read More"
-                  onClick={() => handleReadMore(article)}
-                  imageAlt={article.title}
-                />
-              ))}
+              articles.map((article) =>
+                article.url ? (
+                  <Card
+                    key={article.url}
+                    title={article.title}
+                    description={article.abstract}
+                    imageSrc={
+                      article.multimedia.find(
+                        (img) => img.format === "threeByTwoSmallAt2X"
+                      )?.url
+                    }
+                    buttonText="Read More"
+                    onClick={() => handleReadMore(article)}
+                    imageAlt={article.title}
+                  />
+                ) : null
+              )}
           </div>
         </div>
       )}

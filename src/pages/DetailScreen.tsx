@@ -25,7 +25,7 @@ function DetailScreen() {
     <>
       <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg space-y-10">
         <div className="mx-auto max-w-screen-md text-center">
-          <span className="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm">
+          <span className="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm uppercase">
             {section === '' ? 'Top News': section}
           </span>
           <h1 className="mb-3 mt-2 text-center text-3xl font-semibold tracking-tight lg:text-4xl lg:leading-snug">
@@ -58,7 +58,7 @@ function DetailScreen() {
           {imageCaption}
         </h5>
         <article className="mx-auto max-w-screen-md">
-          <div className="prose mx-auto my-3 dark:prose-invert prose-a:text-blue-600">
+          <div className="prose mx-auto my-3 dark:prose-invert prose-a:text-blue-600 text-xl">
             {abstract}
           </div>
         </article>
