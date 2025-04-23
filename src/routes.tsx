@@ -10,7 +10,7 @@ export const routes: RouteObject[] = [
     element: <ListScreen />,
   },
   {
-    path: "/about/:id",
+    path: "/details",
     element: <DetailScreen />,
   },
   {

@@ -24,7 +24,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-blue-50/50 backdrop-filter shadow-md backdrop-blur-md sticky top-0 z-50 m-auto place-items-center p-5 font-serif w-full">
+    <header className="mb-5 backdrop-filter shadow-md backdrop-blur-md sticky top-0 z-50 m-auto place-items-center p-5 font-serif w-full">
       <h1 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
         The New York Times
       </h1>

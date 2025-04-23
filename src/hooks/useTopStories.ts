@@ -10,7 +10,6 @@ const useTopStories = (section?: string) => {
     const getStories = async () => {
       try {
         const result = await fetchTopStories(section);
-        console.log(result);
         setData(result.results);
       } catch (err) {
         console.error(err);
