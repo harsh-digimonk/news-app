@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { fetchTopStories } from '../api/newsApi';
-import { storyResult } from "../utils/types";
+import { fetchTopStories } from '@/api/newsApi';
+import { storyResult } from "@/utils/types";
 
 const useTopStories = (section: string) => {
   const [data, setData] = useState<storyResult[]>([]);

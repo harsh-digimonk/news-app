@@ -76,11 +76,12 @@ const Dropdown: React.FC<DropdownProps> = ({
         id={id}
         type="button"
         aria-haspopup="true"
+        data-testid="dropdown-button"
         aria-expanded={isOpen}
         onClick={toggleDropdown}
         className="w-full flex justify-between items-center bg-blue-600 text-white px-4 py-2 rounded"
       >
-        <span>{selectedItem?.name || title}</span>
+        <span data-testid="dropdown-selected">{selectedItem?.name || title}</span>
         <GoChevronDown
           className={classNames("transition-transform", {
             "rotate-180": isOpen,

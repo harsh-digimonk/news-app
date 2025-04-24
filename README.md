@@ -18,6 +18,8 @@ Project structure
 ├── public
 ├── src
 │   ├── assets
+│   ├── __tests__
+│   ├── mocks
 │   ├── components
 │   ├── hooks
 │   ├── api

@@ -1,4 +1,4 @@
-import { topStoryResponse } from "../utils/types";
+import { topStoryResponse } from "@/utils/types";
 import apiService from "./api";
 import { API_KEY } from "./apiConfig";
 
