@@ -1,23 +1,26 @@
 name: Run Vitest Tests
 
-on: [pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: npm install
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # or your project's Node version
 
-    - name: Run tests with coverage
-      run: npm test
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Upload coverage report
-      uses: actions/upload-artifact@v4
-      with:
-        name: coverage-report
-        path: coverage
+      - name: Run Vitest tests
+        run: npm test -- --run
