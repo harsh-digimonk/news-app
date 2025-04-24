@@ -12,6 +12,7 @@ type mockArticleType = Pick<
   multimedia: BasicMultimedia[];
 };
 
+
 export const BasicMockArticle: mockArticleType[] = [
   {
     title: "Home title",
