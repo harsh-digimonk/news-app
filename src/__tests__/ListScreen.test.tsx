@@ -12,6 +12,7 @@ describe("List Screen", () => {
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
 
+  // Fetch Mock data form server handler
   it("displays data after fetch", async () => {
     render(
       <BrowserRouter>

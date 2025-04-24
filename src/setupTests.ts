@@ -2,6 +2,7 @@ import "@testing-library/jest-dom/vitest";
 import { afterEach } from "vitest";
 import { server } from "./mocks/server";
 
+
 beforeAll(() =>
   server.listen({
     onUnhandledRequest: (req) => {
@@ -12,7 +13,7 @@ beforeAll(() =>
 
 beforeAll(() =>
   server.listen({
-    onUnhandledRequest: "error", // or log, for debugging
+    onUnhandledRequest: "error"
   })
 );
 afterEach(() => server.resetHandlers());
