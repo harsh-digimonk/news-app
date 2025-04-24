@@ -1,13 +1,13 @@
-import useTopStories from "../hooks/useTopStories";
-import Loader from "../components/Loader";
-import Card from "../components/ui/Card";
+import useTopStories from "@/hooks/useTopStories";
+import Loader from "@/components/Loader";
+import Card from "@/components/ui/Card";
 import { useNavigate } from "react-router";
-import { storyResult } from "../utils/types";
-import useArticleStore from "../store/articleStore";
-import Dropdown from "../components/ui/Dropdown";
-import { categoriesList } from "../data/categories";
+import { storyResult } from "@/utils/types";
+import useArticleStore from "@/store/articleStore";
+import Dropdown from "@/components/ui/Dropdown";
+import { categoriesList } from "@/data/categories";
 import { useState } from "react";
-import { cn } from "../utils/mergeClass";
+import { cn } from "@/utils/mergeClass";
 
 function ListScreen() {
   const [section, setSection] = useState("home");

@@ -1,7 +1,7 @@
 import { format, parseISO } from "date-fns";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router";
-import useArticleStore from "../store/articleStore";
+import useArticleStore from "@/store/articleStore";
 import { SlArrowLeftCircle } from "react-icons/sl";
 import { GoArrowRight } from "react-icons/go";
 

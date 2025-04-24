@@ -21,10 +21,10 @@ export interface storyResult {
     published_date: string;
     material_type_facet: string;
     kicker: string;
-    des_facet: [];
-    org_facet: [];
-    per_facet: [];
-    geo_facet: [];
+    des_facet: string[];
+    org_facet: string[];
+    per_facet: string[];
+    geo_facet: string[];
     short_url: string;
     multimedia: {
       url: string;
