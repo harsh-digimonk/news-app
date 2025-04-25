@@ -1,17 +1,17 @@
-import useTopStories from "@/hooks/useTopStories";
-import Loader from "@/components/Loader";
+// screens/ListScreen.tsx
 import { useNavigate } from "react-router";
-import { storyResult } from "@/utils/types";
+import { useTopStoriesContainer } from "@/hooks/useTopStoriesContainer";
 import useArticleStore from "@/store/articleStore";
+
+import Loader from "@/components/Loader";
 import Dropdown from "@/components/ui/Dropdown";
+import { ArticleGrid } from "@/components/ui/article";
+
 import { categoriesList } from "@/data/categories";
-import { useState } from "react";
-import ArticleList from "@/components/ArticleList";
+import { storyResult } from "@/utils/types";
 
 function ListScreen() {
-  const [section, setSection] = useState("home");
-
-  const { data: articles, loading } = useTopStories(section);
+  const { setSection, articles, loading } = useTopStoriesContainer();
   const setSelectedArticle = useArticleStore(
     (state) => state.setSelectedArticle
   );
@@ -25,10 +25,10 @@ function ListScreen() {
   const handleSelect = (id: string) => {
     const category = categoriesList.find((cat) => cat.id === id);
     if (category) {
-      const encodeCategory = encodeURIComponent(category.name);
-      setSection(encodeCategory);
+      setSection(category.slug);
     }
   };
+
   return (
     <>
       <div className="container mx-auto mt-4 text-right px-4">
@@ -44,27 +44,7 @@ function ListScreen() {
         <Loader />
       ) : (
         <div className="container mx-auto p-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articles &&
-              articles.map((article, index) =>
-                article.url && article.multimedia ? (
-                  <ArticleList
-                    key={index}
-                    title={article.title}
-                    section={article.section}
-                    description={article.abstract}
-                    imageSrc={
-                      article.multimedia.find(
-                        (img) => img.format === "threeByTwoSmallAt2X"
-                      )?.url
-                    }
-                    onClick={() => handleReadMore(article)}
-                    imageAlt={article.title}
-                    index={index}
-                  />
-                ) : null
-              )}
-          </div>
+          <ArticleGrid articles={articles || []} onClick={handleReadMore} />
         </div>
       )}
     </>
