@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { useTopStoriesContainer } from "@/hooks/useTopStoriesContainer";
 import useArticleStore from "@/store/articleStore";
 
-import Loader from "@/components/Loader";
+import Loader from "@/components/ui/Loader";
 import Dropdown from "@/components/ui/Dropdown";
 import { ArticleGrid } from "@/components/ui/article";
 
