@@ -1,13 +1,12 @@
 import useTopStories from "@/hooks/useTopStories";
 import Loader from "@/components/Loader";
-import Card from "@/components/ui/Card";
 import { useNavigate } from "react-router";
 import { storyResult } from "@/utils/types";
 import useArticleStore from "@/store/articleStore";
 import Dropdown from "@/components/ui/Dropdown";
 import { categoriesList } from "@/data/categories";
 import { useState } from "react";
-import { cn } from "@/utils/mergeClass";
+import ArticleList from "@/components/ArticleList";
 
 function ListScreen() {
   const [section, setSection] = useState("home");
@@ -32,7 +31,7 @@ function ListScreen() {
   };
   return (
     <>
-      <div className="container mx-auto text-right px-32">
+      <div className="container mx-auto mt-4 text-right px-4">
         <Dropdown
           id="category-dropdown"
           title="Choose Category"
@@ -45,11 +44,11 @@ function ListScreen() {
         <Loader />
       ) : (
         <div className="container mx-auto p-4">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles &&
               articles.map((article, index) =>
                 article.url && article.multimedia ? (
-                  <Card
+                  <ArticleList
                     key={index}
                     title={article.title}
                     section={article.section}
@@ -61,10 +60,7 @@ function ListScreen() {
                     }
                     onClick={() => handleReadMore(article)}
                     imageAlt={article.title}
-                    className={cn(
-                      "group/grid shadow-input row-span-1 flex flex-col justify-between space-y-4 w-full h-full rounded-xl   p-4 transition duration-200",
-                      index === 3 || index === 6 ? "md:col-span-2" : ""
-                    )}
+                    index={index}
                   />
                 ) : null
               )}
